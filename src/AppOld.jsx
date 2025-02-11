@@ -7,8 +7,6 @@ function App() {
   const [showChart, setShowChart] = useState(false);
   const [currentTime, setCurrentTime] = useState("Loading...");
 
-/*Pull Trigger by CLient*/
-/*    
   useEffect(() => {
     const interval = setInterval(() => {
       fetch("http://127.0.0.1:5000/time")
@@ -17,26 +15,12 @@ function App() {
     }, 60000);
     return () => clearInterval(interval);
   }, []);
-*/
 
-/*Server Push*/
-    useEffect(() => {
-    const eventSource = new EventSource("http://127.0.0.1:5000/time-stream");
-     eventSource.onopen = () => console.log(">>> Connection opened!");
-     eventSource.onerror = (e) => console.log(">>> Error",e);
-    eventSource.onmessage = (event) => {
-	const data = JSON.parse(event.data);
-	console.log(">>> Data",data.time);
-      setCurrentTime(data.time);
-    };
 
-    return () => eventSource.close(); // Clean up on unmount
-  }, []);
-
-    
 
     
     return (
+	<h1>Hello world</h1>
     <div className="container-fluid">
       <div className="row">
         <div className="col-2 bg-light">
